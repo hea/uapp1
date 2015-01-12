@@ -1,0 +1,19 @@
+body{
+    font-family: Microsoft YaHei,verdana,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+	background-color: rgb(247, 247, 247);
+}
+
+.fontWhitecol{
+    color: #ffffff !important;
+}
+.hoverbg a:hover{
+    background-color: #477fa0 !important;
+    font-size: 14px;
+}
+
+
+.webActive {
+    border-left: 1px solid #76ABC9 ;
+    border-right: 1px solid #76ABC9;
+    background: #396d8b;
+}

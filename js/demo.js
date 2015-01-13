@@ -79,6 +79,7 @@ function initDemo() {
         ]
     };
     var option2 = {
+        color: ['gold','aqua','lime'],
         title : {
             text: '',
             subtext: ''
@@ -103,8 +104,17 @@ function initDemo() {
                 mapLocation: {
                     y : 60
                 },
+                /*itemStyle:{
+                 emphasis:{label:{show:true}}
+                 },*/
                 itemStyle:{
-                    emphasis:{label:{show:true}}
+                    normal:{
+                        borderColor:'rgba(100,149,237,1)',
+                        borderWidth:0.5,
+                        areaStyle:{
+                            color: '#1b1b1b'
+                        }
+                    }
                 },
                 nameMap : {
                     'Afghanistan':'阿富汗',
@@ -287,27 +297,126 @@ function initDemo() {
                     'Singapore':'新加坡'
                 },
                 data:[
-                    {name :'China', value : 73206},
-                    {name :'United States of America', value : 2179},
-                    {name :'Germany', value : 114},
-                    {name :'Malaysia', value : 46},
-                    {name :'Thailand', value : 40},
-                    {name :'France', value : 31},
-                    {name :'Ukraine', value : 15},
-                    {name :'United Kingdom', value : 9},
-                    {name :'Canada', value : 6},
-                    {name :'Singapore', value : 5},
-                    {name :'South Korea', value : 5},
-                    {name :'Sweden', value : 4},
-                    {name :'Russia', value : 3},
-                    {name :'Italy', value : 2},
-                    {name :'Israel', value : 1},
-                    {name :'New Zealand', value : 1},
-                    {name :'Cambodia', value : 1},
-                    {name :'Brazil', value : 1},
-                    {name :'Algeria', value : 1}
+                    /*{name :'China', value : 73206},
+                     {name :'United States of America', value : 2179},
+                     {name :'Germany', value : 114},
+                     {name :'Malaysia', value : 46},
+                     {name :'Thailand', value : 40},
+                     {name :'France', value : 31},
+                     {name :'Ukraine', value : 15},
+                     {name :'United Kingdom', value : 9},
+                     {name :'Canada', value : 6},
+                     {name :'Singapore', value : 5},
+                     {name :'South Korea', value : 5},
+                     {name :'Sweden', value : 4},
+                     {name :'Russia', value : 3},
+                     {name :'Italy', value : 2},
+                     {name :'Israel', value : 1},
+                     {name :'New Zealand', value : 1},
+                     {name :'Cambodia', value : 1},
+                     {name :'Brazil', value : 1},
+                     {name :'Algeria', value : 1}*/
 
-                ]
+                ],
+                geoCoord:{
+                    "中国":[116.4551,40.2539],
+                    '俄罗斯': [37.3704,55.4521],
+                    "波兰":[21,52.15],
+                    "卢森堡":[6.08,49.37],
+                    "阿尔及利亚":[3.1301,36.4140],
+                    "加拿大":[-123.06,49.13],
+                    "美国":[-77.02,38.53],
+                    "越南":[105.84009,21.03438],
+                    "新西兰":[174.4634,-41.1712],
+                    "马来西亚":[101.4200,3.800],
+                    "巴西":[-43.12,-22.54],
+                    "泰国":[100.31,13.45],
+                    "法国":[2.2012,48.5139],
+                    "乌克兰":[30.29,50.28],
+                    "英国":[0.0741,51.3028],
+                    "新加坡":[103.38,1.09],
+                    "德国":[13.25,52.30]
+                }
+            },{
+                name: '北京 Top10',
+                type: 'map',
+                mapType: 'world',
+                data:[],
+                markLine : {
+                    smooth:true,
+                    effect : {
+                        show: true,
+                        scaleSize: 1,
+                        period: 30,
+                        color: '#fff',
+                        shadowBlur: 10
+                    },
+                    itemStyle : {
+                        normal: {
+                            borderWidth:1,
+                            lineStyle: {
+                                type: 'solid',
+                                shadowBlur: 10
+                            }
+                        }
+                    },
+                    data : [
+                        [{name:'美国'}, {name:'中国',value:2179}],
+                        [{name:'德国'}, {name:'中国',value:114}],
+                        [{name:'马来西亚'}, {name:'中国',value:46}],
+                        [{name:'泰国'}, {name:'中国',value:40}],
+                        [{name:'法国'}, {name:'中国',value:31}],
+                        [{name:'乌克兰'}, {name:'中国',value:15}],
+                        [{name:'英国'}, {name:'中国',value:9}],
+                        [{name:'加拿大'}, {name:'中国',value:6}],
+                        [{name:'新加坡'}, {name:'中国',value:5}],
+
+
+                    ]
+                },
+                markPoint : {
+                    symbol:'emptyCircle',
+                    symbolSize : function (v){
+                        return 10 + v/50000
+                    },
+                    effect : {
+                        show: true,
+                        shadowBlur : 0
+                    },
+                    itemStyle:{
+                        normal:{
+                            label:{show:false}
+                        },
+                        emphasis: {
+                            label:{position:'top'}
+                        }
+                    },
+                    /*
+                     * 中国	73206	0.967438
+                     美国	2179	0.0287961
+                     德国	114	0.00150654
+                     马来西亚	46	0.000607903
+                     泰国	40	0.000528611
+                     法国	31	0.000409674
+                     乌克兰	15	0.000198229
+                     英国	9	0.000118937
+                     加拿大	6	7.92917e-05
+                     新加坡	5	6.60764e-05
+
+                     * */
+                    data : [
+                        {name :'中国', value : 73206},
+                        {name :'美国', value : 2179},
+                        {name :'德国', value : 114},
+                        {name :'马来西亚', value : 46},
+                        {name :'泰国', value : 40},
+                        {name :'法国', value : 31},
+                        {name :'乌克兰', value : 15},
+                        {name :'英国', value : 9},
+                        {name :'加拿大', value : 6},
+                        {name :'新加坡', value : 5}
+                    ]
+                }
             }
         ]
     };
@@ -327,24 +436,11 @@ function initDemo() {
             trigger: 'item',
             formatter: '{b}'
         },
-        /*legend: {
-         orient: 'vertical',
-         x:'left',
-         data:['北京 Top10', '上海 Top10', '广州 Top10'],
-         selectedMode: 'single',
-         selected:{
-         '上海 Top10' : false,
-         '广州 Top10' : false
-         },
-         textStyle : {
-         color: '#fff'
-         }
-         },*/
         dataRange: {
             min : 0,
             max : 51807,
             calculable : true,
-            color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
+            color: ['#ff3333', 'orange', 'yellow','lime','aqua']
 
         },
         series : [
@@ -377,7 +473,7 @@ function initDemo() {
                     },
                     data : [
 
-                    ],
+                    ]
                 },
                 geoCoord: {
                     '上海': [121.4648,31.2891],

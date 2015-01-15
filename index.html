@@ -7,12 +7,8 @@
     <script>
         $(function(){
             $("#btnNav").on("click",function(){
-               //window.location="views/index.html";
-               /* $.ajax("views/index.html",function(text){
-                    $("#divcontent").html(text);
-                });*/
                 $.ajax({
-                    url : "http://www.cnblogs.com/",
+                    url : "https://182.92.8.131:3005/users",
                     type : "get",
                     cache : false,
                     success : function(data){
@@ -22,7 +18,22 @@
                         $("#divcontent").html(e.statusText);
                     }
                 });
-                //$.ajax("views/index.html",function())
+            });
+
+            $("#btnNavp").on("click",function(){
+                $.ajax({
+                    url : "https://182.92.8.131:3005/users/u/",
+                    type : "post",
+                    cache : false,
+                    //dataType: 'json',
+                    //data:JSON.stringify({a:"aaa"}),
+                    success : function(data){
+                        $("#divcontent").html(data);
+                    },
+                    error : function(e){
+                        $("#divcontent").html(e.statusText);
+                    }
+                });
             });
         })
     </script>
@@ -30,6 +41,7 @@
 <body>
 hello app
 <button id="btnNav">跳转</button>
+<button id="btnNavp">post</button>
 <div id="divcontent" style="width:500px;height: 500px">
 
 </div>

@@ -7,7 +7,22 @@
     <script>
         $(function(){
             $("#btnNav").on("click",function(){
-               window.location="views/index.html";
+               //window.location="views/index.html";
+               /* $.ajax("views/index.html",function(text){
+                    $("#divcontent").html(text);
+                });*/
+                $.ajax({
+                    url : "views/index.html",
+                    type : "get",
+                    cache : false,
+                    success : function(data){
+                        $("#divcontent").html(data);
+                    },
+                    error : function(e){
+                        $("#divcontent").html(e.statusText);
+                    }
+                });
+                //$.ajax("views/index.html",function())
             });
         })
     </script>
@@ -15,5 +30,8 @@
 <body>
 hello app
 <button id="btnNav">跳转</button>
+<div id="divcontent" style="width:500px;height: 500px">
+
+</div>
 </body>
 </html>

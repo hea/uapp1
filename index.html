@@ -6,42 +6,97 @@
     <script src="js/jquery/jquery-1.9.1.min.js"></script>
     <script>
         $(function(){
-            $("#btnNav").on("click",function(){
+
+            var lurl="http://182.92.8.131:3002";
+
+            $("#btnGet").on("click",function(){
                 $.ajax({
-                    url : "https://182.92.8.131:3005/users",
+                    url : lurl+"/users",
                     type : "get",
                     cache : false,
                     success : function(data){
-                        $("#divcontent").html(data);
+                        $("#divcontent").html(data.msg);
                     },
                     error : function(e){
-                        $("#divcontent").html(e.statusText);
+                        $("#divcontent").html("err "+e.statusText);
+                    },
+                    complete:function(cc){
+                        console.log(cc);
                     }
                 });
             });
 
-            $("#btnNavp").on("click",function(){
+            $("#btnPost").on("click",function(){
+                var a={
+                    name:"张三"
+                }
                 $.ajax({
-                    url : "https://182.92.8.131:3005/users/u/",
+                    url : lurl+"/users/u/",
                     type : "post",
                     cache : false,
-                    dataType: 'json',
-                    data:JSON.stringify({a:"aaa"}),
+                    dataType : 'json',
+                    contentType : "application/json;charset=utf-8",
+                    data:JSON.stringify(a),
                     success : function(data){
-                        $("#divcontent").html(data);
+                        $("#divcontent").html(data.msg);
                     },
                     error : function(e){
-                        $("#divcontent").html(e.statusText);
+                        $("#divcontent").html("eee "+e.statusText);
+                    },
+                    complete:function(cc){
+                        console.log(cc);
                     }
                 });
             });
+
+            $("#btnNav").on("click",function(){
+                window.location="views/index.html";
+            });
+
+            $("#btnLogin").on("click",function(){
+                $.ajax({
+                    type: "post",
+                    url: lurl+"/p/login",
+                    dataType: "json",
+                    contentType : "application/json",
+                    data: JSON.stringify({userName:"admin",password:"Stab12_43"}),
+                    success: function(json){
+                        $("#divcontent").html(JSON.stringify(json));
+                    },
+                    error:function(json)
+                    {
+                        $("#divcontent").html(JSON.stringify(json));
+                    }
+                });
+            });
+
+            $("#btnData").on("click",function(){
+                $.ajax({
+                    type: "post",
+                    url: lurl+"/p/kpi/getKpis",
+                    dataType: "json",
+                    contentType : "application/json",
+                    data: JSON.stringify({"kpis":[{"id":1059,"count":13,"grant":2,"areas":1,"time":1414684800000}]}),
+                    success: function(json){
+                        $("#divcontent").html(JSON.stringify(json));
+                    },
+                    error:function(json)
+                    {
+                        $("#divcontent").html(JSON.stringify(json));
+                    }
+                });
+            });
+
         })
     </script>
 </head>
 <body>
 hello app
-<button id="btnNav">跳转</button>
-<button id="btnNavp">post</button>
+<button id="btnGet">get</button>
+<button id="btnPost">post</button>
+<button id="btnNav">nav</button>
+<button id="btnLogin">登录</button>
+<button id="btnData">数据</button>
 <div id="divcontent" style="width:500px;height: 500px">
 
 </div>
